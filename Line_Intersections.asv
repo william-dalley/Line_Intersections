@@ -7,31 +7,22 @@ cla
 hold on
 
 %% Line 1 
-x11 = 5;                            % Line 1 - Point 1 (x)
+x11 = 8;                            % Line 1 - Point 1 (x)
 y11 = 2;                            % Line 1 - Point 1 (y)
 
-x12 = 5;                            % Line 1 - Point 2 (x)
-y12 = 10;                           % Line 1 - Point 2 (y)
+x12 = 8;                            % Line 1 - Point 2 (x)
+y12 = 12;                           % Line 1 - Point 2 (y)
 
 m1 = (y12 - y11) / (x12 - x11);     % Line 1 Gradient
 
-
 if isinf(m1)
-    x1 = x11*ones(1,(y12-y11)+1);
-    y1 = y11:1:y12;
     c1 = x11;
-
-elseif m1 == 0
-    y1 = y11*ones(1,(x12-x11)+1);
-    x1 = x11:1:x12;
-    c1 = y11;
-    
 else
-    x1 = x11:1:x12;                 % Line 1 x values
-    c1 = y11 - m1*x11;              % Line 1 y intersect
-    y1 = m1 * x1 + c1;              % Line 1 y values
-end                                 
+    c1 = y11 - m1*x11;
+end                                 % Line 1 y intersect
     
+x1 = x11:1:x12;                     % Line 1 x values
+y1 = m1 * x1 + c1;                  % Line 1 y values
 
 scatter(x11, y11, 'ko', 'markerfacecolor', 'black')
 scatter(x12, y12, 'ko', 'markerfacecolor', 'black')
